@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_manageRosters:
+                    startActivityForResult(new Intent(HomeActivity.this, ManageRosters.class), 0);
                     return true;
             }
             return false;

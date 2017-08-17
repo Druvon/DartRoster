@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_add_roster"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Add Roster" />
+
+    <item
+        android:id="@+id/navigation_done_rosters"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Done Managing" />
+
+</menu>

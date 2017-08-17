@@ -27,6 +27,10 @@
         <activity
             android:name=".EditRoster"
             android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".ManageRosters"
+            android:parentActivityName=".HomeActivity"
+            android:label="@string/title_activity_manage_rosters"></activity>
     </application>
 
 </manifest>
