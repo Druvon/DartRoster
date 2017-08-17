@@ -30,7 +30,8 @@
         <activity
             android:name=".ManageRosters"
             android:parentActivityName=".HomeActivity"
-            android:label="@string/title_activity_manage_rosters"></activity>
+            android:label="@string/title_activity_manage_rosters"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

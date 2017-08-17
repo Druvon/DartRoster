@@ -32,9 +32,9 @@ public class ManageRosters extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_rosters);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_rosters);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
