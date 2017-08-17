@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.highgatestudios.dartroster.MainActivity">
+    <item
+        android:id="@+id/action_manageTeam"
+        android:orderInCategory="100"
+        android:title="Manage Team"
+        app:showAsAction="never" />
+</menu>
