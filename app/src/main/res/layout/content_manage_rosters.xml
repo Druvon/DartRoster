@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_manage_team">
 
     <ListView
-        android:id="@+id/players"
+        android:id="@+id/rosters"
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:background="@color/dartWhite"

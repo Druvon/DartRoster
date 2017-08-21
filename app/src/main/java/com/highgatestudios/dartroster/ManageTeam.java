@@ -178,13 +178,6 @@ public class ManageTeam extends AppCompatActivity {
 
         if(players == null) return;
 
-        ArrayList<String> playerNames = new ArrayList<String>();
-
-        for(Player p : players){
-            playerNames.add(p.Name);
-        }
-
-
         PlayerAdapter playerAdapter = new PlayerAdapter(this, players, ManageTeam.this);
 
         ListView playerView = (ListView)findViewById(R.id.players);

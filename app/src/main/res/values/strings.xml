@@ -9,4 +9,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_manage_rosters">ManageRosters</string>
+    <string name="title_activity_edit_roster2">EditRoster2</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

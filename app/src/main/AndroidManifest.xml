@@ -26,12 +26,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditRoster"
-            android:parentActivityName=".HomeActivity" />
+            android:label="Create Roster"
+            android:parentActivityName=".ManageRosters"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManageRosters"
-            android:parentActivityName=".HomeActivity"
             android:label="@string/title_activity_manage_rosters"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

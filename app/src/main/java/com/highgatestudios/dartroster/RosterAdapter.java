@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,9 +18,9 @@ public class RosterAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<RosterRow> mDataSource;
+    private ArrayList<Roster> mDataSource;
 
-    public RosterAdapter(Context context, ArrayList<RosterRow> items) {
+    public RosterAdapter(Context context, ArrayList<Roster> items) {
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -46,7 +48,18 @@ public class RosterAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get view for row item
+        View rowView = mInflater.inflate(R.layout.listview_item_roster, parent, false);
 
-        return null;
+        // 1
+        final Roster roster = (Roster) getItem(position);
+
+        // Get title element
+        TextView nameView = (TextView) rowView.findViewById(R.id.name);
+
+        // 2
+        nameView.setText(roster.Name);
+
+
+        return rowView;
     }
 }
