@@ -25,6 +25,8 @@ public class EditRoster extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        LoadPlayers();
+
     }
     private void SetSelectedPlayer(String player){
         TextView selectedPlayer = (TextView)findViewById(R.id.selectedPlayer);
