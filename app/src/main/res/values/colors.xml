@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@color/dartGreen</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">@color/dartGreen</color>
     <color name="dartGreen">#00723E</color>
     <color name="dartWhite">#F3DEB9</color>
