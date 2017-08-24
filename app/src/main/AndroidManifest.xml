@@ -28,6 +28,7 @@
             android:name=".EditRoster"
             android:label="Create Roster"
             android:parentActivityName=".ManageRosters"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManageRosters"

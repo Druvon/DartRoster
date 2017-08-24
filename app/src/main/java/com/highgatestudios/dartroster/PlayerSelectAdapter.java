@@ -1,6 +1,7 @@
 package com.highgatestudios.dartroster;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class PlayerSelectAdapter extends BaseAdapter {
 
     //2
     @Override
-    public Object getItem(int position) {
+    public PlayerSelect getItem(int position) {
         return mDataSource.get(position);
     }
 
@@ -53,10 +54,33 @@ public class PlayerSelectAdapter extends BaseAdapter {
 
         // Get title element
         TextView playerView = (TextView) rowView.findViewById(R.id.playerName);
+        TextView countView = (TextView) rowView.findViewById(R.id.count);
 
         // 2
         playerView.setText(player.Name);
 
+        int playCount = 0;
+        if(player.Playing501) playCount++;
+        if(player.PlayingCricket) playCount++;
+        if(player.Playing301) playCount++;
+
+        if(player.Playing501){
+            ImageView _501 = (ImageView) rowView.findViewById(R.id._501);
+            _501.setBackgroundTintList(_501.getContext().getResources().getColorStateList(R.color.background501));
+
+        }
+        if(player.PlayingCricket){
+            ImageView _cricket = (ImageView) rowView.findViewById(R.id._cricket);
+            _cricket.setBackgroundTintList(_cricket.getContext().getResources().getColorStateList(R.color.backgroundCricket));
+
+        }
+        if(player.Playing301){
+            ImageView _301 = (ImageView) rowView.findViewById(R.id._301);
+            _301.setBackgroundTintList(_301.getContext().getResources().getColorStateList(R.color.background301));
+
+        }
+
+        countView.setText(Integer.toString(playCount));
 
         return rowView;
     }

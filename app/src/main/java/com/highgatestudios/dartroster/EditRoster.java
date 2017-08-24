@@ -8,12 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class EditRoster extends AppCompatActivity {
+
+    PlayerSelect _currentPlayer;
+    PlayerSelectAdapter _adapter;
+    String[] _positions = new String[18];
+    ArrayList<Player> players;
+    ArrayList<PlayerSelect> listItems;
+
+    Button[] _buttons = new Button[18];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +35,26 @@ public class EditRoster extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ClearPositions();
+
         LoadPlayers();
 
-        LoadRosterPositions();
-    }
-    private void SetSelectedPlayer(String player){
-        TextView selectedPlayer = (TextView)findViewById(R.id.selectedPlayer);
-        selectedPlayer.setText(player);
+        SetupButtons();
+
     }
 
+    private void ClearPositions(){
+        for(int i =0;i<18;i++){
+            _positions[i] = "";
+        }
+    }
     private void LoadPlayers(){
 
         ListView mListView = (ListView) findViewById(R.id.player_selection);
 // 1
-        final ArrayList<Player> players = new Team().GetTeam(this);
+        players = new Team().GetTeam(this);
 // 2
-        final ArrayList<PlayerSelect> listItems = new ArrayList<PlayerSelect>();
+        listItems = new ArrayList<PlayerSelect>();
 
         for(int i = 0; i < players.size(); i++){
             Player player = players.get(i);
@@ -50,61 +63,153 @@ public class EditRoster extends AppCompatActivity {
             listItems.add(playerSelect);
         }
 // 4
-        PlayerSelectAdapter adapter = new PlayerSelectAdapter(this, listItems, this);
+        _adapter = new PlayerSelectAdapter(this, listItems, this);
 
         //PlayerSelectAdapter adapter = new PlayerSelectAdapter(this, listItems, this);
-        mListView.setAdapter(adapter);
+        mListView.setAdapter(_adapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                _currentPlayer = listItems.get(i);
 
             }
         });
     }
 
-    private void LoadRosterPositions(){
+    private void SetPosition(String name, int position){
+        if(position <= 5){
+            RemovePlayerFrom501(name);
+        }
+        else if(position > 5 && position <= 11){
+            RemovePlayerFromCricket(name);
+        }
+        else {
+            RemovePlayerFrom301(name);
+        }
 
-        ListView mListView = (ListView) findViewById(R.id.roster);
+        _positions[position] = name;
 
-        final ArrayList<RosterPosition> listItems = new ArrayList<RosterPosition>();
+        RefreshButtons();
 
-        AddPosition("#1 501 #1 Shooter", listItems);
-        AddPosition("#1 501 #2 Shooter", listItems);
-        AddPosition("#2 501 #1 Shooter", listItems);
-        AddPosition("#2 501 #2 Shooter", listItems);
-        AddPosition("#3 501 #1 Shooter", listItems);
-        AddPosition("#3 501 #2 Shooter", listItems);
-        AddPosition("#1 Cricket #1 Shooter", listItems);
-        AddPosition("#1 Cricket #2 Shooter", listItems);
-        AddPosition("#2 Cricket #1 Shooter", listItems);
-        AddPosition("#2 Cricket #2 Shooter", listItems);
-        AddPosition("#3 Cricket #1 Shooter", listItems);
-        AddPosition("#3 Cricket #2 Shooter", listItems);
-        AddPosition("#1 301", listItems);
-        AddPosition("#2 301", listItems);
-        AddPosition("#3 301", listItems);
-        AddPosition("#4 301", listItems);
-        AddPosition("#5 301", listItems);
-        AddPosition("#6 301", listItems);
-
-        RosterPositionAdapter adapter = new RosterPositionAdapter(this, listItems, this);
-
-        mListView.setAdapter(adapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-            }
-        });
+        RefreshPlayerSelectionView();
     }
 
-    private void AddPosition(String positionName, ArrayList<RosterPosition> list){
-        RosterPosition position = new RosterPosition();
-        position.Name = positionName;
-        list.add(position);
+    private void RefreshPlayerSelectionView(){
+
+        for(int i = 0;i<listItems.size();i++){
+            PlayerSelect playerSelect = listItems.get(i);
+            playerSelect.Playing501 = false;
+            playerSelect.PlayingCricket = false;
+            playerSelect.Playing301 = false;
+        }
+
+        for(int i = 0;i<6;i++){
+            SetIsPlaying501(_positions[i]);
+        }
+        for(int i = 6;i<12;i++){
+            SetIsPlayingCricket(_positions[i]);
+        }
+        for(int i = 12;i<18;i++){
+            SetIsPlaying301(_positions[i]);
+        }
+    }
+
+    private void SetIsPlaying501(String name){
+        if(name.isEmpty()) return;
+
+        for(int i = 0;i<listItems.size();i++){
+            PlayerSelect playerSelect = listItems.get(i);
+            if(playerSelect.Name.equalsIgnoreCase(name)){
+                playerSelect.Playing501 = true;
+            }
+        }
+    }
+    private void SetIsPlayingCricket(String name){
+        if(name.isEmpty()) return;
+
+        for(int i = 0;i<listItems.size();i++){
+            PlayerSelect playerSelect = listItems.get(i);
+            if(playerSelect.Name.equalsIgnoreCase(name)){
+                playerSelect.PlayingCricket = true;
+            }
+        }
+    }
+    private void SetIsPlaying301(String name){
+        if(name.isEmpty()) return;
+
+        for(int i = 0;i<listItems.size();i++){
+            PlayerSelect playerSelect = listItems.get(i);
+            if(playerSelect.Name.equalsIgnoreCase(name)){
+                playerSelect.Playing301 = true;
+            }
+        }
+    }
+
+
+    private void RemovePlayerFrom501(String player){
+        for(int i = 0;i<=5;i++){
+            if(_positions[i].equalsIgnoreCase(player)){
+                _positions[i] = "";
+            }
+        }
+    }
+    private void RemovePlayerFromCricket(String player){
+        for(int i = 6;i<=11;i++){
+            if(_positions[i].equalsIgnoreCase(player)){
+                _positions[i] = "";
+            }
+        }
+    }
+    private void RemovePlayerFrom301(String player){
+        for(int i = 12;i<=17;i++){
+            if(_positions[i].equalsIgnoreCase(player)){
+                _positions[i] = "";
+            }
+        }
+    }
+
+    private void RefreshButtons(){
+
+        for(int i = 0; i < _positions.length; i++){
+            _buttons[i].setText(_positions[i]);
+        }
+        _adapter.notifyDataSetChanged();
+    }
+
+    private void SetupButtons(){
+        SetupButton(R.id.btn_501_1_1, 0);
+        SetupButton(R.id.btn_501_1_2, 1);
+        SetupButton(R.id.btn_501_2_1, 2);
+        SetupButton(R.id.btn_501_2_2, 3);
+        SetupButton(R.id.btn_501_3_1, 4);
+        SetupButton(R.id.btn_501_3_2, 5);
+        SetupButton(R.id.btn_cricket_1_1, 6);
+        SetupButton(R.id.btn_cricket_1_2, 7);
+        SetupButton(R.id.btn_cricket_2_1, 8);
+        SetupButton(R.id.btn_cricket_2_2, 9);
+        SetupButton(R.id.btn_cricket_3_1, 10);
+        SetupButton(R.id.btn_cricket_3_2, 11);
+        SetupButton(R.id.btn_301_1, 12);
+        SetupButton(R.id.btn_301_2, 13);
+        SetupButton(R.id.btn_301_3, 14);
+        SetupButton(R.id.btn_301_4, 15);
+        SetupButton(R.id.btn_301_5, 16);
+        SetupButton(R.id.btn_301_6, 17);
+    }
+    private void SetupButton(int buttonId, final int position){
+        _buttons[position] = (Button)findViewById(buttonId);
+        _buttons[position].setTag(position);
+
+        _buttons[position].setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(_currentPlayer == null) return;
+                Button b = (Button)v;
+                Integer buttonTag = (Integer)b.getTag();
+                SetPosition(_currentPlayer.Name, buttonTag);
+            }
+        });
+
     }
 }

@@ -6,4 +6,8 @@
     <color name="dartGreen">#00723E</color>
     <color name="dartWhite">#F3DEB9</color>
     <color name="dartRed">#d0382b</color>
+    <color name="background501">#75B55A</color>
+    <color name="backgroundCricket">#F7F09F</color>
+    <color name="background301">#D87700</color>
+    <color name="breakColor">#303030</color>
 </resources>

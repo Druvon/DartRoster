@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/backgroundCricket"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/_cricket_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cricket"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+    <TextView
+        android:id="@+id/_cricket_1_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="1st Match"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_cricket_1_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_cricket_1_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/_cricket_2_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2nd Match"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_cricket_2_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_cricket_2_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/_cricket_3_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="3rd Match"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_cricket_3_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_cricket_3_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textStyle="bold"
+        android:text="" />
+</LinearLayout>

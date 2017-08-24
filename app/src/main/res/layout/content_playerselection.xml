@@ -7,16 +7,18 @@
         android:id="@+id/selectedPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select a Player"
+        android:text=""
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="18sp"
-        android:background="@android:color/darker_gray"
+        android:textSize="8sp"
+        android:background="@color/breakColor"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <ListView
         android:id="@+id/player_selection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/holo_green_dark"
+        android:choiceMode="singleChoice"/>
 </LinearLayout>
