@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_manage_team">Manage Team</string>
     <string name="preference_file_key">savedData</string>
+    <string name="preference_file_roster_key">savedRosters</string>
     <string name="title_activity_manage_team2">ManageTeam2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

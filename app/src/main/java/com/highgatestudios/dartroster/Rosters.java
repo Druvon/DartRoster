@@ -23,6 +23,35 @@ public class Rosters {
         rosters = GetRosters(activity);
         rosters.add(roster);
     }
+
+    public void UpdateRoster(Activity activity, Roster roster){
+        ArrayList<Roster> newRosters = new ArrayList<>();
+
+        rosters = GetRosters(activity);
+        for(int i = 0;i<rosters.size();i++){
+            Roster savedRoster = rosters.get(i);
+            if(savedRoster.Name.equalsIgnoreCase(roster.Name)){
+                newRosters.add(roster);
+            }
+            else{
+                newRosters.add(savedRoster);
+            }
+        }
+
+        SaveRosters(activity);
+    }
+    public Roster GetRoster(Activity activity, String name) {
+        rosters = GetRosters(activity);
+        for(int i = 0;i<rosters.size();i++){
+            Roster savedRoster = rosters.get(i);
+            if(savedRoster.Name.equalsIgnoreCase(name)){
+                return savedRoster;
+            }
+        }
+
+        return null;
+    }
+
     public ArrayList<Roster> GetRosters(Activity activity){
         try {
             SharedPreferences sharedPref = activity.getSharedPreferences(activity.getString(R.string.preference_file_key), Context.MODE_PRIVATE);

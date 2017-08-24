@@ -23,6 +23,7 @@ public class EditRoster extends AppCompatActivity {
     ArrayList<PlayerSelect> listItems;
 
     Button[] _buttons = new Button[18];
+    String _rosterName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,8 @@ public class EditRoster extends AppCompatActivity {
         setContentView(R.layout.activity_edit_roster);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        String rosterName = this.getIntent().getStringExtra("name");
-        toolbar.setTitle(rosterName);
+        _rosterName = this.getIntent().getStringExtra("name");
+        toolbar.setTitle(_rosterName);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -40,6 +41,20 @@ public class EditRoster extends AppCompatActivity {
         LoadPlayers();
 
         SetupButtons();
+
+        LoadRoster();
+
+    }
+
+    private  void LoadRoster(){
+        Rosters rosters = new Rosters();
+        Roster roster = rosters.GetRoster(this, _rosterName);
+
+        _positions = roster.Positions;
+
+        RefreshButtons();
+
+        RefreshPlayerSelectionView();
 
     }
 
@@ -94,6 +109,13 @@ public class EditRoster extends AppCompatActivity {
         RefreshButtons();
 
         RefreshPlayerSelectionView();
+
+        Roster newRoster = new Roster();
+        newRoster.Name = _rosterName;
+        newRoster.Positions = _positions;
+
+        Rosters rosters = new Rosters();
+        rosters.UpdateRoster(this, newRoster);
     }
 
     private void RefreshPlayerSelectionView(){
@@ -117,6 +139,7 @@ public class EditRoster extends AppCompatActivity {
     }
 
     private void SetIsPlaying501(String name){
+        if(name == null) return;
         if(name.isEmpty()) return;
 
         for(int i = 0;i<listItems.size();i++){
@@ -127,16 +150,21 @@ public class EditRoster extends AppCompatActivity {
         }
     }
     private void SetIsPlayingCricket(String name){
+        if(name == null) return;
         if(name.isEmpty()) return;
 
         for(int i = 0;i<listItems.size();i++){
             PlayerSelect playerSelect = listItems.get(i);
+
+            if(playerSelect.Name == null) continue;
+
             if(playerSelect.Name.equalsIgnoreCase(name)){
                 playerSelect.PlayingCricket = true;
             }
         }
     }
     private void SetIsPlaying301(String name){
+        if(name == null) return;
         if(name.isEmpty()) return;
 
         for(int i = 0;i<listItems.size();i++){
@@ -150,6 +178,7 @@ public class EditRoster extends AppCompatActivity {
 
     private void RemovePlayerFrom501(String player){
         for(int i = 0;i<=5;i++){
+            if(_positions[i] == null) continue;
             if(_positions[i].equalsIgnoreCase(player)){
                 _positions[i] = "";
             }
@@ -157,6 +186,7 @@ public class EditRoster extends AppCompatActivity {
     }
     private void RemovePlayerFromCricket(String player){
         for(int i = 6;i<=11;i++){
+            if(_positions[i] == null) continue;
             if(_positions[i].equalsIgnoreCase(player)){
                 _positions[i] = "";
             }
@@ -164,6 +194,7 @@ public class EditRoster extends AppCompatActivity {
     }
     private void RemovePlayerFrom301(String player){
         for(int i = 12;i<=17;i++){
+            if(_positions[i] == null) continue;
             if(_positions[i].equalsIgnoreCase(player)){
                 _positions[i] = "";
             }
