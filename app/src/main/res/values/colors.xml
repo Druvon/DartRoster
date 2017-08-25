@@ -10,4 +10,5 @@
     <color name="backgroundCricket">#F7F09F</color>
     <color name="background301">#D87700</color>
     <color name="breakColor">#303030</color>
+    <color name="selectedPlayerHighlight">#FFFFFF</color>
 </resources>

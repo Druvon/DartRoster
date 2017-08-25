@@ -38,6 +38,11 @@ public class Rosters {
             }
         }
 
+        rosters.clear();
+        for(int i = 0;i < newRosters.size();i++){
+            rosters.add(newRosters.get(i));
+        }
+
         SaveRosters(activity);
     }
     public Roster GetRoster(Activity activity, String name) {

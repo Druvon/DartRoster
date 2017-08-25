@@ -50,7 +50,9 @@ public class EditRoster extends AppCompatActivity {
         Rosters rosters = new Rosters();
         Roster roster = rosters.GetRoster(this, _rosterName);
 
-        _positions = roster.Positions;
+        for(int i=0;i<_positions.length;i++){
+            _positions[i] = roster.Positions[i];
+        }
 
         RefreshButtons();
 
@@ -106,16 +108,20 @@ public class EditRoster extends AppCompatActivity {
 
         _positions[position] = name;
 
+        Roster newRoster = new Roster();
+        newRoster.Name = _rosterName;
+        for(int i = 0; i < newRoster.Positions.length;i++){
+
+            newRoster.Positions[i] = _positions[i];
+        }
+
+        Rosters rosters = new Rosters();
+        rosters.UpdateRoster(this, newRoster);
+
         RefreshButtons();
 
         RefreshPlayerSelectionView();
 
-        Roster newRoster = new Roster();
-        newRoster.Name = _rosterName;
-        newRoster.Positions = _positions;
-
-        Rosters rosters = new Rosters();
-        rosters.UpdateRoster(this, newRoster);
     }
 
     private void RefreshPlayerSelectionView(){

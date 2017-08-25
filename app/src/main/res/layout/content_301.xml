@@ -26,49 +26,37 @@
         android:id="@+id/btn_301_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_301_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_301_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_301_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_301_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_301_6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        style="@style/PlayerButton"/>
 
 
 </LinearLayout>

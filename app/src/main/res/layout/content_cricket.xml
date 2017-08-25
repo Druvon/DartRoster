@@ -26,17 +26,13 @@
         android:id="@+id/btn_cricket_1_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_cricket_1_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 
     <TextView
         android:id="@+id/_cricket_2_header"
@@ -51,17 +47,13 @@
         android:id="@+id/btn_cricket_2_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_cricket_2_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 
     <TextView
         android:id="@+id/_cricket_3_header"
@@ -76,15 +68,11 @@
         android:id="@+id/btn_cricket_3_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 
     <Button
         android:id="@+id/btn_cricket_3_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textStyle="bold"
-        android:text="" />
+        style="@style/PlayerButton"/>
 </LinearLayout>
