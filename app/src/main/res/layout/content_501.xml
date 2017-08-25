@@ -9,18 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="501"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        style="@style/GameModeHeader"/>
+
     <TextView
         android:id="@+id/_501_1_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="1st Match"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="16sp" />
+        style="@style/MatchHeader"/>
 
     <Button
         android:id="@+id/btn_501_1_1"
@@ -38,10 +34,8 @@
         android:id="@+id/_501_2_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="2nd Match"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="16sp" />
+        style="@style/MatchHeader"/>
 
     <Button
         android:id="@+id/btn_501_2_1"
@@ -59,10 +53,8 @@
         android:id="@+id/_501_3_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="3rd Match"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="16sp" />
+        style="@style/MatchHeader"/>
 
     <Button
         android:id="@+id/btn_501_3_1"

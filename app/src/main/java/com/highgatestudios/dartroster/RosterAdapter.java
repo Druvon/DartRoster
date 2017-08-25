@@ -19,11 +19,13 @@ public class RosterAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList<Roster> mDataSource;
+    private ManageRosters _manageRosters;
 
-    public RosterAdapter(Context context, ArrayList<Roster> items) {
+    public RosterAdapter(Context context, ArrayList<Roster> items, ManageRosters manageRosters) {
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        _manageRosters = manageRosters;
     }
 
     //1
@@ -55,6 +57,13 @@ public class RosterAdapter extends BaseAdapter {
 
         // Get title element
         TextView nameView = (TextView) rowView.findViewById(R.id.name);
+        ImageView deleteRosterView = (ImageView)rowView.findViewById(R.id.deleteRoster);
+        deleteRosterView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                _manageRosters.DeleteRoster(roster.Name);
+            }
+        });
 
         // 2
         nameView.setText(roster.Name);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ManageRosters extends AppCompatActivity {
+
+    private String _currentRosterName;
+    private RosterAdapter adapter;
+    private ArrayList<Roster> rosters;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,6 +43,7 @@ public class ManageRosters extends AppCompatActivity {
         }
 
     };
+
 
     private void GetNewRosterName(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -65,6 +71,10 @@ public class ManageRosters extends AppCompatActivity {
                 }
 
                 //TODO: validate if roster name exists
+                if(new Rosters().DoesRosterExist(ManageRosters.this, name)){
+                    ShowValidationError("Roster already exists");
+                    return;
+                }
 
                 //TODO: save new roster and move to edit roster
                 Roster roster = new Roster();
@@ -74,6 +84,9 @@ public class ManageRosters extends AppCompatActivity {
                 rosters.SaveRosters(ManageRosters.this);
 
                 LoadRosters();
+
+                ShowMessage(name + " successfully created.");
+
             }
         });
 
@@ -88,11 +101,13 @@ public class ManageRosters extends AppCompatActivity {
     }
 
     private void LoadRosters(){
-        ArrayList<Roster> rosters = new Rosters().GetRosters(this);
+        rosters = new Rosters().GetRosters(this);
 
         if(rosters == null) return;
 
-        RosterAdapter adapter = new RosterAdapter(this, rosters);
+        rosters = new Rosters().GetRosters(this);
+
+        adapter = new RosterAdapter(this, rosters, this);
 
         ListView view = (ListView)findViewById(R.id.rosters);
         view.setAdapter(adapter);
@@ -106,9 +121,37 @@ public class ManageRosters extends AppCompatActivity {
                 EditRoster(item);
             }
         });
+    }
 
+    private void ShowMessage(String message){
+        Snackbar.make(findViewById(R.id.toolbar), message, Snackbar.LENGTH_LONG).show();
+    }
+
+    public void DeleteRoster(String name){
+        _currentRosterName = name;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ManageRosters.this);
+        builder.setMessage("Are you sure you want to delete the roster \"" + _currentRosterName + "\"?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
 
     }
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    new Rosters().DeleteRoster(ManageRosters.this, _currentRosterName);
+                    LoadRosters();
+                    ShowMessage(_currentRosterName + " successfully deleted.");
+
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No button clicked
+                    break;
+            }
+        }
+    };
 
     public void EditRoster(String name){
         Intent intent = new Intent(ManageRosters.this, EditRoster.class);

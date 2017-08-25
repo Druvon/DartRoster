@@ -24,6 +24,12 @@
                     android:textSize="18sp"
                     android:textStyle="italic" />
 
+                <ImageView
+                    android:id="@+id/deleteRoster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
+
         </LinearLayout>
 
 </LinearLayout>

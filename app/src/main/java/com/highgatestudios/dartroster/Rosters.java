@@ -23,6 +23,35 @@ public class Rosters {
         rosters = GetRosters(activity);
         rosters.add(roster);
     }
+    public boolean DoesRosterExist(Activity activity, String name){
+        rosters = GetRosters(activity);
+        for(int i = 0;i<rosters.size();i++){
+            Roster savedRoster = rosters.get(i);
+            if(savedRoster.Name.equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void DeleteRoster(Activity activity, String name){
+        ArrayList<Roster> newRosters = new ArrayList<>();
+
+        rosters = GetRosters(activity);
+        for(int i = 0;i<rosters.size();i++){
+            Roster savedRoster = rosters.get(i);
+            if(!savedRoster.Name.equalsIgnoreCase(name)){
+                newRosters.add(savedRoster);
+            }
+        }
+
+        rosters.clear();
+        for(int i = 0;i < newRosters.size();i++){
+            rosters.add(newRosters.get(i));
+        }
+
+        SaveRosters(activity);
+    }
 
     public void UpdateRoster(Activity activity, Roster roster){
         ArrayList<Roster> newRosters = new ArrayList<>();
